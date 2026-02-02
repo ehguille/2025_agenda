@@ -1,5 +1,9 @@
 # 2025_agenda
 
+Ojo: requiere de los siguientes proyectos:
+- https://github.com/ehguille/2025_enumeraciones
+- https://github.com/ehguille/2025_depurador
+
 ## 30/01/2026
 
 Crea una aplicación que gestione una agenda de contactos. Usa todos los conceptos que hayamos visto hasta ahora para hacerlo.
