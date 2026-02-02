@@ -2,14 +2,21 @@ package agenda;
 
 import java.util.ArrayList;
 import depurador.Depurador;
+import enumeraciones.Provincias;
 
 public class Agenda {
 	
 	private ArrayList<Contacto> contactos;
+	private Provincias p;
 	
 	public Agenda() {
 		Depurador.trazar("Creando lista de contactos");
 		contactos=new ArrayList<>();
+		//TODO: eliminar el siguiente ejemplo aleatorio
+		Contacto c = new Contacto("Pepe");
+		c.addTelefono("Casa",p.A_CORUNA.prefijo,999999999);
+		System.out.println(c);
+		//TODO: Fin
 	}
 	
 	/**
