@@ -1,6 +1,8 @@
 package agenda;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
 import depurador.Depurador;
 import enumeraciones.Provincias;
 
@@ -12,11 +14,6 @@ public class Agenda {
 	public Agenda() {
 		Depurador.trazar("Creando lista de contactos");
 		contactos=new ArrayList<>();
-		//TODO: eliminar el siguiente ejemplo aleatorio
-		Contacto c = new Contacto("Pepe");
-		c.addTelefono("Casa",p.A_CORUNA.prefijo,999999999);
-		System.out.println(c);
-		//TODO: Fin
 	}
 	
 	/**
@@ -26,6 +23,29 @@ public class Agenda {
 	public void addContacto(Contacto c) {
 		Depurador.trazar("Añadiendo contacto a la agenda");
 		contactos.add(c);
+	}
+	
+	public ArrayList<Contacto> buscarContacto(String nombre) {
+		Depurador.trazar("Buscando "+nombre);
+		ArrayList<Contacto> coincidencias=new ArrayList<>();
+		for(int i=0;i<contactos.size();i++) {
+			String nombreActual=contactos.get(i).getName();
+			Depurador.trazar("Comparando parámetro "+nombre+" con "+nombreActual);
+			if(nombreActual.contains(nombre)) {
+				Depurador.trazar("Los nombres coinciden, se devolverá el contacto.");
+				coincidencias.add(contactos.get(i));
+			}
+		}
+		return coincidencias;
+		
+	}
+	
+	/*
+	 * TODO: buscarContacto() con otros parámetros.
+	 */
+	
+	public String toString() {
+		return contactos.toString();
 	}
 
 }

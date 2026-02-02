@@ -14,13 +14,17 @@ public class Interfaz {
 	
 	/** Agenda propiamente dicha*/
 	private Agenda a;
+	private Scanner s;
 	
 	/**
 	 * Lanza la interfaz
 	 */
 	public Interfaz() {
+		s=new Scanner(System.in);
 		a=new Agenda();
+		Cargador.cargarContactos(a);
 		mostrarMenuPrincipal();
+		s.close();
 	}
 	
 	/**
@@ -28,7 +32,6 @@ public class Interfaz {
 	 * TODO: Gestionar excepciones si se introduce algo distinto a un entero.
 	 */
 	public void mostrarMenuPrincipal() {
-		Scanner s=new Scanner(System.in);
 		int opcion=-1;
 		do {
 			System.out.println("[Aplicacion agenda]");
@@ -39,26 +42,49 @@ public class Interfaz {
 			System.out.println("4.- Buscar (y mostrar) un contacto.");
 			System.out.println("5.- Imprimir toda la agenda.");
 			System.out.println("0.- Salir.");
-			opcion=s.nextInt();
+			opcion=Integer.parseInt(s.nextLine());
 			switch(opcion) {
 			case 0:
 				System.out.println("Saliendo de la aplicación...");
 				break;
 			case 1:
+				mostrarMenuAddContacto();
 				break;
 			case 2:
 				break;
 			case 3:
 				break;
 			case 4:
+				mostrarMenuBuscar();
 				break;
 			case 5:
+				imprimirAgenda();
 				break;
 			default:
 				System.out.println("** Opción incorrecta; escoge otra opción.");
 			}
 		} while(opcion>0&&opcion<6);
-		s.close();
+	}
+	
+	public void mostrarMenuBuscar() {
+		String nombre;
+		System.out.println("[Introduzca un nombre a buscar]");
+		nombre=s.nextLine();
+		System.out.println(a.buscarContacto(nombre));
+	}
+	
+	public void mostrarMenuAddContacto() {
+		String nombre;
+		System.out.println("[Crear nuevo contacto]");
+		System.out.println("- Introduzca nombre del contacto:");
+		nombre=s.nextLine();
+		Contacto c = new Contacto(nombre);
+		a.addContacto(c);
+		//TODO: Meter resto de datos
+	}
+	
+	public void imprimirAgenda() {
+		System.out.println(a);
 	}
 	
 	/**

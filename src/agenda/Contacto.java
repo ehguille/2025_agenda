@@ -71,6 +71,10 @@ public class Contacto {
 		telefonos.put(descripcion.toUpperCase(), new Telefono(prefijo,numero));
 	}
 	
+	public String getName() {
+		return nombre;
+	}
+	
 	/**
 	 * Devuelve una descripción en formato parecido a XML del contacto.
 	 */
