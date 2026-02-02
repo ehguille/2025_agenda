@@ -25,12 +25,22 @@ public class Agenda {
 		contactos.add(c);
 	}
 	
+	/**
+	 * Busca el nombre "nombre" en el campo "nombre" de la lista de
+	 * contactos. Lo añade a la lista de coincidencias si el nombre
+	 * pasado como parámetro forma parte de alguno de estos nombres,
+	 * aunque no coincida exactamente. No distingue entre mayúsculas
+	 * y minúsculas.
+	 * @param nombre Nombre a buscar.
+	 * @return ArrayList de contactos que cumplen la condición de 
+	 * búsqueda.
+	 */
 	public ArrayList<Contacto> buscarContacto(String nombre) {
 		Depurador.trazar("Buscando "+nombre);
 		ArrayList<Contacto> coincidencias=new ArrayList<>();
 		for(int i=0;i<contactos.size();i++) {
-			String nombreActual=contactos.get(i).getName();
-			Depurador.trazar("Comparando parámetro "+nombre+" con "+nombreActual);
+			String nombreActual=contactos.get(i).getName().toUpperCase();
+			Depurador.trazar("Comparando parámetro "+nombre.toUpperCase()+" con "+nombreActual);
 			if(nombreActual.contains(nombre)) {
 				Depurador.trazar("Los nombres coinciden, se devolverá el contacto.");
 				coincidencias.add(contactos.get(i));
