@@ -3,6 +3,8 @@ package agenda;
 
 import java.util.Scanner;
 
+import agenda.excepciones.NombreDuplicadoException;
+import agenda.excepciones.NombreVacioException;
 import depurador.Depurador;
 
 /**
@@ -22,7 +24,11 @@ public class Interfaz {
 	public Interfaz() {
 		s=new Scanner(System.in);
 		a=new Agenda();
-		Cargador.cargarContactos(a);
+		try { //TODO: Eliminar cuando no se use.
+			Cargador.cargarContactos(a);
+		} catch (NombreVacioException | NombreDuplicadoException e) {
+			e.printStackTrace();
+		}
 		mostrarMenuPrincipal();
 		s.close();
 	}
@@ -73,13 +79,25 @@ public class Interfaz {
 		System.out.println(a.buscarContacto(nombre));
 	}
 	
-	public void mostrarMenuAddContacto() {
+	public void mostrarMenuAddContacto()  {
 		String nombre;
 		System.out.println("[Crear nuevo contacto]");
 		System.out.println("- Introduzca nombre del contacto:");
 		nombre=s.nextLine();
 		Contacto c = new Contacto(nombre);
-		a.addContacto(c);
+		//TODO: Esto es una ñapa para explicar las excepciones.
+		try {
+			a.addContacto(c);
+		} catch(NombreVacioException e) {
+			System.err.println("Nombre vacío.");
+		} catch(NombreDuplicadoException e) {
+			System.err.println("Nombre duplicado.");
+		} catch(NullPointerException e) {
+			System.err.println("Estás intentando añadir un contacto que no existe.");
+		} catch(Exception e) {
+			System.err.println("Excepción genérica.");
+		}
+		
 		//TODO: Meter resto de datos
 	}
 	

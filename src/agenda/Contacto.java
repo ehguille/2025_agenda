@@ -8,7 +8,7 @@ import depurador.Depurador;
 /**
  * Implementación de un contacto
  */
-public class Contacto {
+public class Contacto  {
 	
 	private class Telefono {
 		
@@ -89,6 +89,13 @@ public class Contacto {
 		resultado+="  <\\mails>\n";
 		resultado+="</contacto>\n";
 		return resultado;
+	}
+
+	public boolean equals(String nombre) {
+		if (this.nombre.toUpperCase().contains(nombre.toUpperCase()))
+			return true;
+		else
+			return false;
 	}
 
 }
