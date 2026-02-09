@@ -2,18 +2,32 @@ package agenda;
 
 import agenda.excepciones.NombreDuplicadoException;
 import agenda.excepciones.NombreVacioException;
+import enumeraciones.Provincias;
 
 public abstract class Cargador {
 	
 	public static void cargarContactos(Agenda a) throws NombreVacioException, NombreDuplicadoException {
-		a.addContacto(new Contacto("Pepe"));
-		a.addContacto(new Contacto("María"));
-		a.addContacto(new Contacto("Carmen"));
-		a.addContacto(new Contacto("Rosa"));
-		a.addContacto(new Contacto("Josefa"));
-		a.addContacto(new Contacto("Mariano"));
-		a.addContacto(new Contacto("Carlos"));
-		a.addContacto(new Contacto("Terelu"));
-		a.addContacto(new Contacto("Manolín"));
+		a.addContacto("Manolo","Pérez");
+		a.setDireccionPostal("Manolo", "Calle uno");
+		a.addTelefono("Manolo", "Casa",Provincias.A_CORUNA.prefijo, 987654);
+		a.addCorreo("Manolo","Trabajo","direccion1@dominio.es");
+		
+		a.addContacto("Luisa","Pérez");
+		a.setDireccionPostal("Luisa", "Calle dos");
+		a.addTelefono("Luisa", "Casa",Provincias.A_CORUNA.prefijo, 987654);
+		a.addCorreo("Luisa","Trabajo","direccion2@dominio.es");
+		
+		a.addContacto("Lola","Pérez");
+		a.setDireccionPostal("Lola", "Calle tres");
+		a.addTelefono("Lola", "Casa",Provincias.A_CORUNA.prefijo, 987654);
+		a.addCorreo("Lola","Trabajo","direccion3@dominio.es");
+
+		/* Método antiguo:
+		Contacto c1=new Contacto("Luisa","Garcñua");
+		c1.setDireccionPostal("Calle Dos");
+		c1.addTelefono("Trabajo", Provincias.A_CORUNA.prefijo, 612124);
+		c1.addCorreo("Personal", "direccion2@dominio.es");
+		a.addContacto(c1);
+		*/
 	}
 }

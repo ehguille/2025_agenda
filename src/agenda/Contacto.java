@@ -60,6 +60,16 @@ public class Contacto  {
 		telefonos=new HashMap<String, Telefono>();
 		mails=new HashMap<String, String>();
 	}
+
+	public HashMap<String, Telefono> getTelefonos(){
+		return telefonos;
+	}
+	
+
+	public HashMap<String, String> getMails(){
+		return mails;
+	}
+
 	
 	/**
 	 * Añade un teléfono al contacto
@@ -71,8 +81,31 @@ public class Contacto  {
 		telefonos.put(descripcion.toUpperCase(), new Telefono(prefijo,numero));
 	}
 	
-	public String getName() {
+	public String getNombre() {
 		return nombre;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre=nombre;
+	}
+	
+	public void setDireccionPostal(String direccionPostal) {
+		Depurador.trazar("Añadiendo dirección postal a "+this.nombre);
+		this.direccionPostal=direccionPostal;
+	}
+	
+	public void setApellidos(String apellidos) {
+		Depurador.trazar("Añadiendo apellidos a "+this.nombre);
+		this.apellidos=apellidos;
+	}
+	
+	public void addCorreo(String descripcion, String direccion) {
+		Depurador.trazar("Añadiendo correo a "+this.nombre);
+		mails.put(descripcion.toUpperCase(), direccion);
+	}
+	
+	public String getApellidos() {
+		return apellidos;
 	}
 	
 	/**
@@ -81,6 +114,8 @@ public class Contacto  {
 	public String toString() {
 		String resultado="<contacto>\n";
 		resultado+="  <nombre>"+nombre+"</nombre>\n";
+		resultado+="  <apellidos>"+apellidos+"</apellidos>\n";
+		resultado+="  <direccionPostal>"+direccionPostal+"</direccionPostal>\n";
 		resultado+="  <telefonos>\n";
 		resultado+="    "+telefonos.toString()+"\n";
 		resultado+="  <\\telefonos>\n";
@@ -92,7 +127,7 @@ public class Contacto  {
 	}
 
 	public boolean equals(String nombre) {
-		if (this.nombre.toUpperCase().contains(nombre.toUpperCase()))
+		if (this.nombre.toUpperCase().equals(nombre.toUpperCase()))
 			return true;
 		else
 			return false;
