@@ -2,6 +2,7 @@ package agenda;
 
 import agenda.excepciones.NombreDuplicadoException;
 import agenda.excepciones.NombreVacioException;
+import enumeraciones.Paises;
 import enumeraciones.Provincias;
 
 public abstract class Cargador {
@@ -9,17 +10,17 @@ public abstract class Cargador {
 	public static void cargarContactos(Agenda a) throws NombreVacioException, NombreDuplicadoException {
 		a.addContacto("Manolo","Pérez");
 		a.setDireccionPostal("Manolo", "Calle uno");
-		a.addTelefono("Manolo", "Casa",Provincias.A_CORUNA.prefijo, 987654);
+		a.addTelefono("Manolo", "Casa",Paises.ESPANA, 987654);
 		a.addCorreo("Manolo","Trabajo","direccion1@dominio.es");
 		
 		a.addContacto("Luisa","Pérez");
 		a.setDireccionPostal("Luisa", "Calle dos");
-		a.addTelefono("Luisa", "Casa",Provincias.A_CORUNA.prefijo, 987654);
+		a.addTelefono("Luisa", "Casa",Paises.CANADA, 987654);
 		a.addCorreo("Luisa","Trabajo","direccion2@dominio.es");
 		
 		a.addContacto("Lola","Pérez");
 		a.setDireccionPostal("Lola", "Calle tres");
-		a.addTelefono("Lola", "Casa",Provincias.A_CORUNA.prefijo, 987654);
+		a.addTelefono("Lola", "Casa",Paises.MEXICO, 987654);
 		a.addCorreo("Lola","Trabajo","direccion3@dominio.es");
 
 		/* Método antiguo:

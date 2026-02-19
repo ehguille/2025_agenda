@@ -188,11 +188,12 @@ public class Interfaz {
 				descripcionTelefono=s.nextLine();
 				if(descripcionTelefono=="")			
 					break;
+				/**TODO: Gestionar con paises, no prefijos
 				System.out.println("- Introduzca el prefijo del teléfono para dicha localización:");
 				int prefijo=Integer.parseInt(s.nextLine());
 				System.out.println("- Introduzca el teléfono:");
 				int telefono=Integer.parseInt(s.nextLine());
-				a.addTelefono(nombre, descripcionTelefono, prefijo, telefono);
+				a.addTelefono(nombre, descripcionTelefono, prefijo, telefono);*/
 			} while(descripcionTelefono!="");
 			//
 			//Bucle para añadir mails.

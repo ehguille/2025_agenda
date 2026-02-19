@@ -4,6 +4,7 @@ package agenda;
 import java.util.HashMap;
 
 import depurador.Depurador;
+import enumeraciones.Paises;
 
 /**
  * Implementación de un contacto
@@ -15,13 +16,13 @@ public class Contacto  {
 		private int prefijo;
 		private int numero;
 		
-		private Telefono(int prefijo, int numero) {
-			this.prefijo=prefijo;
+		private Telefono(Paises pais, int numero) {
+			this.prefijo=pais.prefijo;
 			this.numero=numero;
 		}
 		
-		private void setPrefijo(int prefijo) {
-			this.prefijo=prefijo;
+		private void setPrefijo(Paises pais) {
+			this.prefijo=pais.prefijo;
 		}
 		
 		private int getPrefijo() {
@@ -39,7 +40,7 @@ public class Contacto  {
 		public String toString() {
 			String prefijo=Integer.toString(this.prefijo);
 			String numero=Integer.toString(this.numero);
-			return prefijo+numero;
+			return prefijo+"-"+numero;
 		}
 	}
 	
@@ -76,9 +77,9 @@ public class Contacto  {
 	 * @param descripcion Tipo de teléfono (casa, trabajo, móvil, ...)
 	 * @param numero Número de teléfono
 	 */
-	public void addTelefono(String descripcion, int prefijo, int numero) {
+	public void addTelefono(String descripcion, Paises pais, int numero) {
 		//Se añade la descripción en mayúsculas para evitar confusiones del usuario.
-		telefonos.put(descripcion.toUpperCase(), new Telefono(prefijo,numero));
+		telefonos.put(descripcion.toUpperCase(), new Telefono(pais,numero));
 	}
 	
 	public String getNombre() {
