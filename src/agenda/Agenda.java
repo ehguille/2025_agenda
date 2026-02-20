@@ -36,7 +36,6 @@ public class Agenda {
 				return contactos.get(i).getTelefonos().toString();
 		return null;
 	}
-		
 
 	public String getCorreos(String nombre) {
 		for(int i=0;i<contactos.size();i++) 
@@ -149,7 +148,11 @@ public class Agenda {
 	 * TODO: buscarContacto() con otros parámetros.
 	 */		
 	public String toString() {
-		return contactos.toString();
+		String cadena="<agenda>\n";
+		for(int i=0;i<contactos.size();i++)
+			cadena+=contactos.get(i);
+		cadena+="</agenda>";
+		return cadena;
 	}
 
 }

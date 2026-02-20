@@ -118,11 +118,13 @@ public class Contacto  {
 		resultado+="  <apellidos>"+apellidos+"</apellidos>\n";
 		resultado+="  <direccionPostal>"+direccionPostal+"</direccionPostal>\n";
 		resultado+="  <telefonos>\n";
-		resultado+="    "+telefonos.toString()+"\n";
-		resultado+="  <\\telefonos>\n";
+		for(String descripcion:telefonos.keySet()) 
+			resultado+="        <"+descripcion+">"+telefonos.get(descripcion)+"</"+descripcion+">\n";
+		resultado+="  </telefonos>\n";
 		resultado+="  <mails>\n";
-		resultado+="    "+mails+"\n";
-		resultado+="  <\\mails>\n";
+		for(String descripcion:mails.keySet()) 
+			resultado+="        <"+descripcion+">"+mails.get(descripcion)+"</"+descripcion+">\n";
+		resultado+="  </mails>\n";
 		resultado+="</contacto>\n";
 		return resultado;
 	}

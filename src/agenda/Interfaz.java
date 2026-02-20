@@ -25,6 +25,7 @@ public class Interfaz {
 	public Interfaz() {
 		s=new Scanner(System.in);
 		a=new Agenda();
+		GestorPersistencia g=new GestorPersistencia("agenda.dat");
 		try { //TODO: Eliminar cuando no se use.
 			Cargador.cargarContactos(a);
 		} catch (NombreVacioException | NombreDuplicadoException e) {
@@ -32,6 +33,7 @@ public class Interfaz {
 		}
 		mostrarMenuPrincipal();
 		s.close();
+		g.guardar(a);
 	}
 	
 	/**
