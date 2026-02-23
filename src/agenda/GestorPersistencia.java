@@ -21,4 +21,17 @@ public class GestorPersistencia {
 		}
 	}
 	
+	public void recuperar(Agenda b) {
+		try {
+			String agenda=Files.readString(fichero);
+			String[] contactos=agenda.split("</contacto>");
+			for(String contacto:contactos) {
+				System.err.println("CONTACTO");
+				System.out.println(contacto);
+			}
+		} catch(IOException ioe) {
+			ioe.printStackTrace();
+		}
+	}
+	
 }
