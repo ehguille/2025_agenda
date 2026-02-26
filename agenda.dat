@@ -1,0 +1,59 @@
+<agenda>
+<contacto>
+  <nombre>Manolo</nombre>
+  <apellidos>Pérez</apellidos>
+  <direccionPostal>Calle uno</direccionPostal>
+  <telefonos>
+        <CASA>28-987654</CASA>
+  </telefonos>
+  <mails>
+        <TRABAJO>direccion1@dominio.es</TRABAJO>
+  </mails>
+</contacto>
+<contacto>
+  <nombre>Luisa</nombre>
+  <apellidos>López</apellidos>
+  <direccionPostal>Calle dos</direccionPostal>
+  <telefonos>
+        <CASA>1-987654</CASA>
+        <TRABAJO>1-987654</TRABAJO>
+  </telefonos>
+  <mails>
+        <TRABAJO>direccion2@dominio.es</TRABAJO>
+  </mails>
+</contacto>
+<contacto>
+  <nombre>Lola</nombre>
+  <apellidos>García</apellidos>
+  <direccionPostal>Calle tres</direccionPostal>
+  <telefonos>
+        <CASA>42-987654</CASA>
+  </telefonos>
+  <mails>
+        <TRABAJO>direccion3@dominio.es</TRABAJO>
+  </mails>
+</contacto>
+<contacto>
+  <nombre>Fulgencio</nombre>
+  <apellidos>López</apellidos>
+  <direccionPostal>La dirección de Fulgencio López</direccionPostal>
+  <telefonos>
+        <DESPACHO>42-999999</DESPACHO>
+        <CASA>42-987654</CASA>
+  </telefonos>
+  <mails>
+        <DESPACHO>f.lopez@dominio.es</DESPACHO>
+        <TRABAJO>fulgencio@dominio.es</TRABAJO>
+  </mails>
+</contacto>
+<contacto>
+  <nombre>Manuel</nombre>
+  <apellidos>Castella</apellidos>
+  <direccionPostal>La dirección de M. Llaneza</direccionPostal>
+  <telefonos>
+  </telefonos>
+  <mails>
+        <CASA>m.llaneza@gmail.com</CASA>
+  </mails>
+</contacto>
+</agenda>
