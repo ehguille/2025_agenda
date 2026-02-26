@@ -7,6 +7,7 @@ import agenda.excepciones.NombreDuplicadoException;
 import agenda.excepciones.NombreVacioException;
 import java.io.File;
 import depurador.Depurador;
+import enumeraciones.Pais;
 
 /**
  * Interfaz de la aplicación
@@ -27,11 +28,6 @@ public class Interfaz {
 		a=new Agenda();
 		GestorPersistencia g=new GestorPersistencia("agenda.dat");
 		g.recuperar(a);
-		try { //TODO: Eliminar cuando no se use.
-			Cargador.cargarContactos(a);
-		} catch (NombreVacioException | NombreDuplicadoException e) {
-			e.printStackTrace();
-		}
 		mostrarMenuPrincipal();
 		s.close();
 		g.guardar(a);
@@ -187,22 +183,21 @@ public class Interfaz {
 			//Bucle para añadir teléfonos. Podría sacarse a un método.
 			String descripcionTelefono;
 			do { //Pido teléfonos hasta que introduzca una descripción vacía.
-				System.out.println("- Introduzca descripción para un telefono:");
+				System.out.println("- Introduzca descripción para un telefono (vacío para salir):");
 				descripcionTelefono=s.nextLine();
 				if(descripcionTelefono=="")			
 					break;
-				/**TODO: Gestionar con paises, no prefijos
-				System.out.println("- Introduzca el prefijo del teléfono para dicha localización:");
-				int prefijo=Integer.parseInt(s.nextLine());
+				System.out.println("- Introduzca el país (CADENA) del teléfono para dicha localización:");
+				System.out.println(Pais.posiblesValores());
+				String prefijo=s.nextLine();
 				System.out.println("- Introduzca el teléfono:");
 				int telefono=Integer.parseInt(s.nextLine());
-				a.addTelefono(nombre, descripcionTelefono, prefijo, telefono);*/
+				a.addTelefono(nombre, descripcionTelefono, Pais.valueOf(prefijo), telefono);
 			} while(descripcionTelefono!="");
-			//
 			//Bucle para añadir mails.
 			String descripcionMail;
 			do {
-				System.out.println("- Introduzca descripción para un e-mail:");
+				System.out.println("- Introduzca descripción para un e-mail (vacío para salir):");
 				descripcionMail=s.nextLine();
 				if(descripcionMail=="")
 					break;
@@ -221,6 +216,7 @@ public class Interfaz {
 		} catch(Exception e) {
 			//Esto captura cualquier otra excepción.
 			System.err.println("Excepción genérica.");
+			e.printStackTrace();
 		}		
 	}
 	

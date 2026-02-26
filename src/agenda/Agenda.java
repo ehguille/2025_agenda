@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import agenda.excepciones.*;
 import depurador.Depurador;
-import enumeraciones.Paises;
+import enumeraciones.Pais;
 import enumeraciones.Provincias;
 
 //TODO: Cambiar bucles for por iteradores.
@@ -107,7 +107,7 @@ public class Agenda {
 	}
 	
 	//TODO: Comprobar que se mete un prefijo válido
-	public boolean addTelefono(String nombreContacto, String descripcionTelefono, Paises pais, int telefono) {
+	public boolean addTelefono(String nombreContacto, String descripcionTelefono, Pais pais, int telefono) {
 		for(int i=0;i<contactos.size();i++)
 			if(contactos.get(i).getNombre().toUpperCase().equals(nombreContacto.toUpperCase())) {
 				Depurador.trazar("Añadiendo teléfono a "+nombreContacto);
