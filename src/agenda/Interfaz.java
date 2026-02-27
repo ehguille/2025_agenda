@@ -160,7 +160,8 @@ public class Interfaz {
 				
 				break;
 			case 5:
-				//misma casuística que con los teléfonos
+				System.err.println("Opción no implementada");
+				//TODO: Misma casuística que los teléfonos
 				break;
 			default:
 				System.out.println("Opción incorrecta.");
