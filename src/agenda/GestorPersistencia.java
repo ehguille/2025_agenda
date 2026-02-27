@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import agenda.excepciones.NombreDuplicadoException;
 import agenda.excepciones.NombreVacioException;
+import depurador.Depurador;
 import enumeraciones.Pais;
 
 public class GestorPersistencia {
@@ -20,6 +21,7 @@ public class GestorPersistencia {
 	
 	public void guardar(Agenda a) {
 		try {
+			Depurador.trazar("Guardando agenda en "+fichero);
 			Files.writeString(fichero, a.toString(), StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -28,16 +30,21 @@ public class GestorPersistencia {
 	
 	public void recuperar(Agenda a) {
 		try {
+			Depurador.trazar("Recuperando agenda de "+fichero);
 			String agenda=Files.readString(fichero);
 			String[] agendaPorLineas=agenda.split("\n");
 			ArrayList<String> unContactoEnTexto=new ArrayList<String>();
 			//OJO: Esto supone que existe el fichero con las etiquetas <agenda></agenda>
 			//Inicializando i=1 y terminando en .lenght-1, elimino la primera y última etiquetas.
 			for(int i=1;i<agendaPorLineas.length-1;i++) {
-				if(agendaPorLineas[i].equals("<contacto>"))
+				if(agendaPorLineas[i].equals("<contacto>")) {
+					Depurador.trazar("Se ha encontrado la etiqueta <contacto>");
 					unContactoEnTexto=new ArrayList<String>();
-				else if(agendaPorLineas[i].equals("</contacto>"))
+				}
+				else if(agendaPorLineas[i].equals("</contacto>")) {
+					Depurador.trazar("Se ha encontrado la etiqueta </contacto>");
 					procesarContactoEnTexto(unContactoEnTexto, a);
+				}
 				else
 					unContactoEnTexto.add(agendaPorLineas[i]);
 			}
@@ -48,6 +55,7 @@ public class GestorPersistencia {
 	
 	//Tremenda chambonada.
 	private void procesarContactoEnTexto(ArrayList<String> unContactoEnTexto, Agenda a) {
+		Depurador.trazar("Se procesa un contacto en texto");
 		String nombre="";
 		boolean procesandoTelefonos=false;
 		boolean procesandoCorreos=false;
@@ -75,12 +83,15 @@ public class GestorPersistencia {
 			}
 			//Para los teléfonos:
 			else if(textoSinEspacios.equals("<telefonos>")) {
+				Depurador.trazar("Procesando los teléfonos");
 				procesandoTelefonos=true;
 			}
 			else if(textoSinEspacios.equals("</telefonos>")) {
+				Depurador.trazar("Fin del procesamiento de los teléfonos");
 				procesandoTelefonos=false;
 			}
 			if(procesandoTelefonos&&!textoSinEspacios.equals("<telefonos>")&&!textoSinEspacios.equals("</telefonos>")) {
+				Depurador.trazar("Se ha encontrado un teléfono");
 				String[] telefono=textoSinEspacios.split(">");
 				String descripcionTelefono=telefono[0].substring(1);
 				String[] numeroTelefono=telefono[1].split("<")[0].split("-");
@@ -93,12 +104,15 @@ public class GestorPersistencia {
 			}
 			//Para los correos (igual que los teléfonos)
 			else if(textoSinEspacios.equals("<mails>")) {
+				Depurador.trazar("Procesando las direcciones de correo.");
 				procesandoCorreos=true;
 			}
 			else if(textoSinEspacios.equals("</mails>")) {
+				Depurador.trazar("Fin del procesamiento de las direcciones de correo.");
 				procesandoCorreos=false;
 			}
 			if(procesandoCorreos&&!textoSinEspacios.equals("<mails>")&&!textoSinEspacios.equals("</mails>")) {
+				Depurador.trazar("Se ha encontrado una dirección de correo.");
 				String[] correo=textoSinEspacios.split(">");
 				String descripcionCorreo=correo[0].substring(1);
 				String direccionCorreo=correo[1].split("<")[0];

@@ -51,6 +51,7 @@
   <apellidos>Castella</apellidos>
   <direccionPostal>La dirección de M. Llaneza</direccionPostal>
   <telefonos>
+        <CASA>2-222</CASA>
   </telefonos>
   <mails>
         <CASA>m.llaneza@gmail.com</CASA>

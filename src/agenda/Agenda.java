@@ -18,13 +18,15 @@ public class Agenda {
 	}
 
 	
-	public String buscarContacto(String nombreBuscado) {
+
+	
+	public Contacto buscarContacto(String nombreBuscado) {
 		Depurador.trazar("Buscando "+nombreBuscado);
 		for(int i=0;i<contactos.size();i++) {
 			Depurador.trazar("Comparando parámetro "+nombreBuscado.toUpperCase()+" con "+contactos.get(i).getNombre());
 			if(contactos.get(i).equals(nombreBuscado)) {
 				Depurador.trazar("Los nombres coinciden, se devolverá el contacto.");
-				return contactos.get(i).toString();
+				return contactos.get(i);
 			}
 		}
 		return null;		
@@ -35,6 +37,12 @@ public class Agenda {
 			if(contactos.get(i).getNombre().toUpperCase().equals(nombre.toUpperCase())) 
 				return contactos.get(i).getTelefonos().toString();
 		return null;
+	}
+	
+	public int contarNumerosTelefono(String nombre) {
+		Contacto c = buscarContacto(nombre);
+		return c.getTelefonos().size();
+		
 	}
 
 	public String getCorreos(String nombre) {
@@ -116,6 +124,14 @@ public class Agenda {
 			}
 		return false;
 	}
+	
+	public void borrarTelefono(String nombreContacto, String descripcion) {
+		for(Contacto c:contactos) {
+			if(c.getNombre().toUpperCase().equals(nombreContacto.toUpperCase()))
+				c.borrarTelefono(descripcion);
+		}
+	}
+	
 	
 	public boolean addCorreo(String nombreContacto, String descripcionCorreo, String direccionCorreo) {
 		for(int i=0;i<contactos.size();i++)

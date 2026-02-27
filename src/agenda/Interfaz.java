@@ -131,12 +131,33 @@ public class Interfaz {
 				a.setApellidos(nombreContacto, s.nextLine());
 				break;
 			case 4:
-				System.out.println(a.getTelefonos(nombreContacto));
-				//20260209: TODO (Seguir)
-				//Dar opciones:
-				//borrar teléfono
-				//modificar teléfono
-				//añadir teléfono
+				if(a.contarNumerosTelefono(nombreContacto)==0) {
+					System.out.println(nombreContacto+" no tiene teléfonos asociados.");
+					System.out.println("Introduzca una descripción para añadir un nuevo teléfono o déjela vacía para volver al menú anterior");
+
+				}
+				else {
+					System.out.println("Escoja el teléfono a EDITAR o BORRAR o añada una nueva descripción para CREAR uno nuevo:");
+					System.out.println(a.getTelefonos(nombreContacto));
+				}
+				//Las siguientes líneas añaden, editan o borran.
+				String descripcion=s.nextLine();
+				if(!descripcion.isEmpty()) {
+					System.out.println("Introduzca el prefijo para el teléfono.");
+					System.out.println("Déjelo vacío para borrar el teléfono.");
+					System.out.println("Posibles opciones: ");
+					System.out.println(Pais.posiblesValores());
+					String prefijo=s.nextLine();
+					if(prefijo.trim().equals("")) {
+						a.borrarTelefono(nombreContacto, descripcion);
+						break;
+					}
+					Pais pais=Pais.valueOf(prefijo);
+					System.out.println("Introduzca el número de teléfono:");
+					int telefono=Integer.parseInt(s.nextLine());
+					a.addTelefono(nombreContacto, descripcion, pais, telefono);
+				}
+				
 				break;
 			case 5:
 				//misma casuística que con los teléfonos

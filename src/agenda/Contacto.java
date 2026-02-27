@@ -105,6 +105,10 @@ public class Contacto  {
 		mails.put(descripcion.toUpperCase(), direccion);
 	}
 	
+	public void borrarTelefono(String descripcion) {
+		telefonos.remove(descripcion);
+	}
+	
 	public String getApellidos() {
 		return apellidos;
 	}
